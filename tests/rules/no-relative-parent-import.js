@@ -1,44 +1,27 @@
-/* global describe, it, expect, jest, beforeEach */
+/* global */
 
+const { RuleTester } = require('eslint');
 const noRelativeParentImport = require('../../src/rules/no-relative-parent-import');
 
-describe('no-relative-parent-import', () => {
-  const context = {
-    report: jest.fn(),
-  };
+const ruleTester = new RuleTester({
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: 'module',
+  },
+});
 
-  const rule = noRelativeParentImport.create(context);
-
-  beforeEach(() => {
-    context.report.mockClear();
-  });
-
-  it('reports when the import path contains ".."', () => {
-    const badNode = {
-      source: {
-        value: '../relative-parent',
-      },
-    };
-
-    rule.ImportDeclaration(badNode);
-
-    expect(context.report).toHaveBeenCalledTimes(1);
-    expect(context.report).toHaveBeenCalledWith({
-      node: badNode,
-      message:
+ruleTester.run('no-relative-parent-import', noRelativeParentImport, {
+  valid: [
+    'import * as React from "react";',
+    'import { StoreState } from "./store/types";',
+    'import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";',
+  ],
+  invalid: [
+    {
+      code: 'import parent from "../parent";',
+      errors: [
         'Do not import parent modules with relative "../". Use the "^/" alias.',
-    });
-  });
-
-  it('does not report when the import path does not contains ".."', () => {
-    const goodNode = {
-      source: {
-        value: '^/absolute',
-      },
-    };
-
-    rule.ImportDeclaration(goodNode);
-
-    expect(context.report).toHaveBeenCalledTimes(0);
-  });
+      ],
+    },
+  ],
 });
