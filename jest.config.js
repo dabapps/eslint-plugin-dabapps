@@ -9,11 +9,8 @@ module.exports = {
       statements: 100,
     },
   },
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-  },
-  testRegex: '(/tests/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  testRegex: '(/tests/.*|\\.(test|spec))\\.(js|jsx)$',
+  moduleFileExtensions: ['js', 'jsx'],
   testPathIgnorePatterns: [helpersPattern],
   coveragePathIgnorePatterns: [helpersPattern],
 };

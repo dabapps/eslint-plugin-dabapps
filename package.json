@@ -1,16 +1,14 @@
 {
-  "name": "@dabapps/npm-template",
+  "name": "eslint-plugin-dabapps",
   "version": "0.0.0",
-  "description": "A template for creating npm modules",
-  "main": "dist/js/index.js",
+  "description": "Custom DabApps ESLint rules",
+  "main": "src/index.js",
   "directories": {},
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "scripts": {
-    "dist": "rm -rf dist/ && mkdir -p dist/js/ && tsc --project './tsconfig.dist.json'",
-    "start": "budo examples/less/index.less examples/ts/index.ts --live -- -t node-lessify -p [tsify -p examples/tsconfig.json]",
-    "lint": "tsc --noEmit --project tsconfig.json && npm run prettier-check && tslint --project tsconfig.json '{src,tests,types,examples,docs}/**/*.@(ts|tsx)'",
+    "lint": "npm run prettier-check && eslint '{src,tests,types,examples,docs}/**/*.{ts,tsx,js,jsx}'",
     "prettier-check": "prettier --check '**/*.{ts,tsx,js,jsx,json,md,html}'",
     "prettier": "prettier --write '**/*.{ts,tsx,js,jsx,json,md,html}'",
     "tests": "jest",
@@ -18,34 +16,31 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dabapps/npm-template.git"
+    "url": "git+https://github.com/dabapps/eslint-plugin-dabapps.git"
   },
   "keywords": [
-    "npm",
+    "eslint",
     "template",
     "dabapps"
   ],
   "author": "DabApps",
-  "license": "UNLICENSED",
+  "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/dabapps/npm-template/issues"
+    "url": "https://github.com/dabapps/eslint-plugin-dabapps/issues"
   },
-  "homepage": "https://github.com/dabapps/npm-template#readme",
+  "homepage": "https://github.com/dabapps/eslint-plugin-dabapps#readme",
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^24.9.1",
-    "acorn": "^6.4.1",
-    "browserify": "^16.5.0",
-    "budo": "^11.6.3",
-    "jest": "^24.9.0",
-    "less": "^2.7.3",
-    "node-lessify": "^0.1.5",
+    "@types/jest": "^25.1.4",
+    "ajv": "^6.12.0",
+    "eslint-config-dabapps": "^6.0.0",
+    "jest": "^25.2.1",
     "prettier": "^1.19.1",
-    "ts-jest": "^24.3.0",
-    "tsify": "^4.0.1",
     "tslint": "^5.20.1",
     "tslint-config-dabapps": "^0.6.2",
-    "typescript": "^3.8.3"
+    "webpack": "^4.42.1"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+    "eslint": "6"
+  }
 }
