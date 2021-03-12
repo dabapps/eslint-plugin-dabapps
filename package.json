@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-dabapps",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Custom DabApps ESLint rules",
   "main": "src/index.js",
   "directories": {},
@@ -29,7 +29,6 @@
     "url": "https://github.com/dabapps/eslint-plugin-dabapps/issues"
   },
   "homepage": "https://github.com/dabapps/eslint-plugin-dabapps#readme",
-  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^25.1.4",
     "ajv": "^6.12.0",
