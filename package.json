@@ -29,6 +29,7 @@
     "url": "https://github.com/dabapps/eslint-plugin-dabapps/issues"
   },
   "homepage": "https://github.com/dabapps/eslint-plugin-dabapps#readme",
+  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^25.1.4",
     "ajv": "^6.12.0",
@@ -40,6 +41,6 @@
     "webpack": "^4.42.1"
   },
   "peerDependencies": {
-    "eslint": "7"
+    "eslint": "6 || 7"
   }
 }
